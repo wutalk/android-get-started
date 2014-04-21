@@ -34,6 +34,13 @@ public class DisplayMessageActivity extends ActionBarActivity {
 	}
 
 	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		String msg = getIntent().getStringExtra(MainActivity.EXTRA_MESSAGE);
+		outState.putString(MainActivity.EXTRA_MESSAGE, msg);
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.

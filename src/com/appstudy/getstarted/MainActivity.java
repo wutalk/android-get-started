@@ -21,12 +21,19 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		// main activity should not have up icon
+		// getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+		String msg = "created";
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+		} else {
+			String lastEditMsg = savedInstanceState
+					.getString(MainActivity.EXTRA_MESSAGE);
+			msg += " " + lastEditMsg;
 		}
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
